@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="adminParadasPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ParadasView1" RangeSize="25" DataControl="AppModuleDataControl" id="ParadasView1Iterator"/>
+    <iterator Binds="RutaParadaView1" RangeSize="10" DataControl="AppModuleDataControl" id="RutaParadaView1Iterator"/>
+    <iterator Binds="RutasView1" RangeSize="10" DataControl="AppModuleDataControl" id="RutasView1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ParadasView1Iterator" id="Direccion">
+      <AttrNames>
+        <Item Value="Direccion"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ParadasView1Iterator" id="Latitud">
+      <AttrNames>
+        <Item Value="Latitud"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ParadasView1Iterator" id="Longitud">
+      <AttrNames>
+        <Item Value="Longitud"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ParadasView1Iterator" id="Nombre">
+      <AttrNames>
+        <Item Value="Nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ParadasView1Iterator" id="ParadasView1">
+      <nodeDefinition DefName="model.EVO.ParadasView" Name="ParadasView10">
+        <AttrNames>
+          <Item Value="Idparada"/>
+          <Item Value="Nombre"/>
+          <Item Value="Direccion"/>
+          <Item Value="Latitud"/>
+          <Item Value="Longitud"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ParadasView1Iterator" id="CreateInsert" InstanceName="AppModuleDataControl.ParadasView1"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ParadasView1Iterator" id="Execute" InstanceName="AppModuleDataControl.ParadasView1"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action id="Commit" DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="AppModuleDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <tree IterBinding="RutasView1Iterator" id="RutasView1">
+      <nodeDefinition DefName="model.EVO.RutasView" Name="RutasView10">
+        <AttrNames>
+          <Item Value="Idempresatransporte"/>
+          <Item Value="Idestatus"/>
+          <Item Value="Idruta"/>
+          <Item Value="Nombre"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="RutasView1Iterator" id="CreateInsertRuta" InstanceName="AppModuleDataControl.RutasView1"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="RutasView1Iterator" id="ExecuteRuta" InstanceName="AppModuleDataControl.RutasView1"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <attributeValues IterBinding="RutasView1Iterator" id="Idempresatransporte">
+      <AttrNames>
+        <Item Value="Idempresatransporte"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RutasView1Iterator" id="Idestatus">
+      <AttrNames>
+        <Item Value="Idestatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="RutasView1Iterator" id="Nombre1">
+      <AttrNames>
+        <Item Value="Nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues Uses="LOV_Idempresatransporte" StaticList="false" IterBinding="RutasView1Iterator"
+                  id="Idempresatransporte1"/>
+    <listOfValues Uses="LOV_Idestatus" StaticList="false" IterBinding="RutasView1Iterator" id="Idestatus1"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="adminRutasPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RutasView1" RangeSize="25" DataControl="AppModuleDataControl" id="RutasView1Iterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="RutasView1Iterator" StaticList="false" Uses="LOV_Idempresatransporte" id="Idempresatransporte"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="RutasView1Iterator" StaticList="false" Uses="LOV_Idestatus" id="Idestatus"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="RutasView1Iterator" id="Nombre">
+      <AttrNames>
+        <Item Value="Nombre"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="RutasView1Iterator" id="RutasView1">
+      <nodeDefinition DefName="model.EVO.RutasView" Name="RutasView10">
+        <AttrNames>
+          <Item Value="Idruta"/>
+          <Item Value="Nombre"/>
+          <Item Value="Idempresatransporte"/>
+          <Item Value="Idestatus"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="RutasView1Iterator" id="CreateInsert" InstanceName="AppModuleDataControl.RutasView1"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="RutasView1Iterator" id="Execute" InstanceName="AppModuleDataControl.RutasView1"
+            DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <action id="Commit" DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" DataControl="AppModuleDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+  </bindings>
+</pageDefinition>

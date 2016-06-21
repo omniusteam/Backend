@@ -1,0 +1,197 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="adminParadas.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGroupLayout id="pgl1" halign="center">
+                <af:image source="/resources/img/VialidadUrbanaDos.png" id="i1"/>
+                <af:spacer width="30" height="30" id="s1"/>
+                <af:outputText value="Vialidad Urbana" id="ot6"
+                               inlineStyle="font-size:smaller; color:Red; font-weight:bold;"/>
+            </af:panelGroupLayout>
+            <af:panelTabbed position="above" id="pt1">
+                <af:showDetailItem id="tab1" text="RUTAS">
+                    <af:panelGroupLayout id="pgl2">
+                        <af:panelCollection id="pc1">
+                    <f:facet name="menus"/>
+                    <f:facet name="toolbar">
+                        <af:toolbar id="t2">
+                            <af:button text="Nueva ruta" id="b1" action="#{viewScope.adminRutas.initNewRuta}"/>
+                        </af:toolbar>
+                    </f:facet>
+                    <f:facet name="statusbar"/>
+                    <af:table value="#{bindings.RutasView1.collectionModel}" var="row"
+                              rows="#{bindings.RutasView1.rangeSize}"
+                              emptyText="#{bindings.RutasView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.RutasView1.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.RutasView1.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.RutasView1.rangeSize}" id="t1">
+                        <af:column headerText="#{bindings.RutasView1.hints.Idruta.label}" id="c1">
+                            <af:outputText value="#{row.Idruta}" shortDesc="#{bindings.RutasView1.hints.Idruta.tooltip}"
+                                           id="ot1">
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.RutasView1.hints.Idruta.format}"/>
+                            </af:outputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.RutasView1.hints.Nombre.label}" id="c2">
+                            <af:outputText value="#{row.Nombre}" shortDesc="#{bindings.RutasView1.hints.Nombre.tooltip}"
+                                           id="ot2"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.RutasView1.hints.Idempresatransporte.label}" id="c3">
+                            <af:selectOneChoice value="#{row.bindings.Idempresatransporte.inputValue}"
+                                                label="#{row.bindings.Idempresatransporte.label}"
+                                                required="#{bindings.RutasView1.hints.Idempresatransporte.mandatory}"
+                                                shortDesc="#{bindings.RutasView1.hints.Idempresatransporte.tooltip}"
+                                                readOnly="true" id="soc3">
+                                <f:selectItems value="#{row.bindings.Idempresatransporte.items}" id="si3"/>
+                                <f:validator binding="#{row.bindings.Idempresatransporte.validator}"/>
+                            </af:selectOneChoice>
+                        </af:column>
+                        <af:column headerText="#{bindings.RutasView1.hints.Idestatus.label}" id="c4">
+                            <af:selectOneChoice value="#{row.bindings.Idestatus.inputValue}"
+                                                label="#{row.bindings.Idestatus.label}"
+                                                required="#{bindings.RutasView1.hints.Idestatus.mandatory}"
+                                                shortDesc="#{bindings.RutasView1.hints.Idestatus.tooltip}"
+                                                readOnly="true" id="soc4">
+                                <f:selectItems value="#{row.bindings.Idestatus.items}" id="si4"/>
+                                <f:validator binding="#{row.bindings.Idestatus.validator}"/>
+                            </af:selectOneChoice>
+                        </af:column>
+                    </af:table>
+                </af:panelCollection>
+                    </af:panelGroupLayout>
+                </af:showDetailItem>
+                <af:showDetailItem text="PARADAS" id="sdi1">
+                    <af:panelCollection id="pc2">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t3">
+                                <af:button text="Nueva Parada" id="b3"
+                                           action="#{viewScope.adminParadas.initNewParada}"/>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.ParadasView1.collectionModel}" var="row"
+                                  rows="#{bindings.ParadasView1.rangeSize}"
+                                  emptyText="#{bindings.ParadasView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.ParadasView1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.ParadasView1.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.ParadasView1.rangeSize}" id="t4">
+                            <af:column headerText="#{bindings.ParadasView1.hints.Idparada.label}" id="c6">
+                                <af:outputText value="#{row.Idparada}"
+                                               shortDesc="#{bindings.ParadasView1.hints.Idparada.tooltip}" id="ot7">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.ParadasView1.hints.Idparada.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.ParadasView1.hints.Nombre.label}" id="c7">
+                                <af:outputText value="#{row.Nombre}"
+                                               shortDesc="#{bindings.ParadasView1.hints.Nombre.tooltip}" id="ot8"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.ParadasView1.hints.Direccion.label}" id="c9">
+                                <af:outputText value="#{row.Direccion}"
+                                               shortDesc="#{bindings.ParadasView1.hints.Direccion.tooltip}" id="ot3"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.ParadasView1.hints.Latitud.label}" id="c8">
+                                <af:outputText value="#{row.Latitud}"
+                                               shortDesc="#{bindings.ParadasView1.hints.Latitud.tooltip}" id="ot4">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.ParadasView1.hints.Latitud.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.ParadasView1.hints.Longitud.label}" id="c5">
+                                <af:outputText value="#{row.Longitud}"
+                                               shortDesc="#{bindings.ParadasView1.hints.Longitud.tooltip}" id="ot5">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.ParadasView1.hints.Longitud.format}"/>
+                                </af:outputText>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </af:showDetailItem>
+            </af:panelTabbed>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p_newParada"
+                      binding="#{viewScope.adminParadas.p_newParada}">
+                <af:dialog id="d2">
+                    <f:facet name="buttonBar">
+                        <af:toolbar id="t5">
+                            <af:button text="Guardar" id="b4" action="#{viewScope.adminParadas.saveParada}"/>
+                            <af:button text="Cancelar" id="b2" action="#{viewScope.adminParadas.cancelParada}"
+                                       partialSubmit="false"/>
+                        </af:toolbar>
+                    </f:facet>
+                    <af:panelFormLayout id="pfl1">
+                        <af:inputText value="#{bindings.Direccion.inputValue}" label="#{bindings.Direccion.hints.label}"
+                                      required="#{bindings.Direccion.hints.mandatory}"
+                                      columns="#{bindings.Direccion.hints.displayWidth}"
+                                      maximumLength="#{bindings.Direccion.hints.precision}"
+                                      shortDesc="#{bindings.Direccion.hints.tooltip}" id="it1">
+                            <f:validator binding="#{bindings.Direccion.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Latitud.inputValue}" label="#{bindings.Latitud.hints.label}"
+                                      required="#{bindings.Latitud.hints.mandatory}"
+                                      columns="#{bindings.Latitud.hints.displayWidth}"
+                                      maximumLength="#{bindings.Latitud.hints.precision}"
+                                      shortDesc="#{bindings.Latitud.hints.tooltip}" id="it3">
+                            <f:validator binding="#{bindings.Latitud.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.Latitud.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Longitud.inputValue}" label="#{bindings.Longitud.hints.label}"
+                                      required="#{bindings.Longitud.hints.mandatory}"
+                                      columns="#{bindings.Longitud.hints.displayWidth}"
+                                      maximumLength="#{bindings.Longitud.hints.precision}"
+                                      shortDesc="#{bindings.Longitud.hints.tooltip}" id="it4">
+                            <f:validator binding="#{bindings.Longitud.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.Longitud.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Nombre.inputValue}" label="#{bindings.Nombre.hints.label}"
+                                      required="#{bindings.Nombre.hints.mandatory}"
+                                      columns="#{bindings.Nombre.hints.displayWidth}"
+                                      maximumLength="#{bindings.Nombre.hints.precision}"
+                                      shortDesc="#{bindings.Nombre.hints.tooltip}" id="it5">
+                            <f:validator binding="#{bindings.Nombre.validator}"/>
+                        </af:inputText>
+                    </af:panelFormLayout>
+                </af:dialog>
+            </af:popup>
+            
+              <af:popup childCreation="deferred" autoCancel="disabled" id="p_newRuta"
+                      binding="#{viewScope.adminRutas.p_newRuta}">
+                <af:dialog id="d3" type="none">
+                    <f:facet name="buttonBar">
+                        <af:toolbar id="t6">
+                            <af:button text="Guardar" id="b5" action="#{viewScope.adminRutas.saveRuta}"/>
+                            <af:button text="Cancelar" id="b6" action="#{viewScope.adminRutas.cancelarNewRuta}"
+                                       partialSubmit="false" immediate="true"/>
+                        </af:toolbar>
+                    </f:facet>
+                    <af:panelFormLayout id="pfl2">
+                        <af:selectOneChoice value="#{bindings.Idempresatransporte1.inputValue}"
+                                            label="#{bindings.Idempresatransporte1.label}"
+                                            required="#{bindings.Idempresatransporte1.hints.mandatory}"
+                                            shortDesc="#{bindings.Idempresatransporte1.hints.tooltip}" id="soc1">
+                            <f:selectItems value="#{bindings.Idempresatransporte1.items}" id="si1"/>
+                            <f:validator binding="#{bindings.Idempresatransporte1.validator}"/>
+                        </af:selectOneChoice>
+                        <af:selectOneChoice value="#{bindings.Idestatus1.inputValue}" label="#{bindings.Idestatus.label}"
+                                            required="#{bindings.Idestatus1.hints.mandatory}"
+                                            shortDesc="#{bindings.Idestatus1.hints.tooltip}" id="soc2" autoSubmit="true">
+                            <f:selectItems value="#{bindings.Idestatus1.items}" id="si2"/>
+                            <f:validator binding="#{bindings.Idestatus1.validator}"/>
+                        </af:selectOneChoice>
+                        <af:inputText value="#{bindings.Nombre1.inputValue}" label="#{bindings.Nombre1.hints.label}"
+                                      required="#{bindings.Nombre1.hints.mandatory}"
+                                      columns="#{bindings.Nombre1.hints.displayWidth}"
+                                      maximumLength="#{bindings.Nombre1.hints.precision}"
+                                      shortDesc="#{bindings.Nombre1.hints.tooltip}" id="it2">
+                            <f:validator binding="#{bindings.Nombre1.validator}"/>
+                        </af:inputText>
+                    </af:panelFormLayout>
+                </af:dialog>
+            </af:popup>
+        </af:form>
+    </af:document>
+</f:view>

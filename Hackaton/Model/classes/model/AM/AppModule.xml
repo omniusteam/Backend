@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AppModule"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="CatalogoView1"
+    ViewObjectName="model.EVO.CatalogoView"/>
+  <ViewUsage
+    Name="EstadoView1"
+    ViewObjectName="model.EVO.EstadoView"/>
+  <ViewUsage
+    Name="MunicipioView1"
+    ViewObjectName="model.EVO.MunicipioView"/>
+  <ViewUsage
+    Name="PaisView1"
+    ViewObjectName="model.EVO.PaisView"/>
+  <ViewUsage
+    Name="ParadasView1"
+    ViewObjectName="model.EVO.ParadasView"/>
+  <ViewUsage
+    Name="RutaParadaView1"
+    ViewObjectName="model.EVO.RutaParadaView"/>
+  <ViewUsage
+    Name="UsuariosView1"
+    ViewObjectName="model.EVO.UsuariosView"/>
+  <ViewUsage
+    Name="CatEmpresasView1"
+    ViewObjectName="model.EVO.CatEmpresasView"/>
+  <ViewUsage
+    Name="CatEstatusView1"
+    ViewObjectName="model.EVO.CatEstatusView"/>
+  <ViewUsage
+    Name="RutasView1"
+    ViewObjectName="model.EVO.RutasView"/>
+  <ViewUsage
+    Name="CatCategoriasView1"
+    ViewObjectName="model.EVO.CatCategoriasView"/>
+  <ViewUsage
+    Name="RutaParadaView2"
+    ViewObjectName="model.EVO.RutaParadaView"/>
+  <ViewUsage
+    Name="ViewUsuarioParadaView1"
+    ViewObjectName="model.EVO.ViewUsuarioParadaView"/>
+  <ViewLinkUsage
+    Name="RutaRutaParadaViewLink1"
+    ViewLinkObjectName="model.EVO.RutaRutaParadaViewLink"
+    SrcViewUsageName="model.AM.AppModule.RutasView1"
+    DstViewUsageName="model.AM.AppModule.RutaParadaView2"
+    Reversed="false"/>
+</AppModule>

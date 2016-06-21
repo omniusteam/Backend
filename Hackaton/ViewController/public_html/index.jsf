@@ -1,0 +1,399 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+    <af:document title="index.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:spacer width="100" height="100" id="s1"/>
+            <af:panelGroupLayout id="pgl8" halign="center" layout="horizontal" valign="middle">
+                <af:outputText value="VIALIDAD URBANA" id="ot8" inlineStyle="color:Black; font-size:xx-large;"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl7" layout="horizontal">
+
+                <af:panelGroupLayout id="pgl1" halign="center" layout="vertical">
+                    <af:image id="i1" source="/resources/img/VialidadUrbanaDos.png"/>
+                    <af:spacer width="30" height="30" id="s2"/>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl2">
+                    <af:panelTabbed position="above" id="pt1">
+                        <af:showDetailItem id="tab1" text="RUTAS">
+                            <af:panelGroupLayout id="pgl3">
+                                <af:panelSplitter id="ps1" splitterPosition="500">
+                                    <f:facet name="first">
+                                        <af:panelCollection id="pc1">
+                                            <f:facet name="menus"/>
+                                            <f:facet name="toolbar">
+                                                <af:toolbar id="t3">
+                                                    <af:button text="NUEVA RUTA" id="b1"
+                                                               action="#{viewScope.index.init_newRuta}"/>
+                                                    <af:button text="AGREGAR PARADA" id="b10"
+                                                               action="#{viewScope.index.initNewRutaParda}"/>
+                                                </af:toolbar>
+                                            </f:facet>
+                                            <f:facet name="statusbar"/>
+                                            <af:table value="#{bindings.RutasView1.collectionModel}" var="row"
+                                                      rows="#{bindings.RutasView1.rangeSize}"
+                                                      emptyText="#{bindings.RutasView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      selectedRowKeys="#{bindings.RutasView1.collectionModel.selectedRow}"
+                                                      selectionListener="#{bindings.RutasView1.collectionModel.makeCurrent}"
+                                                      rowSelection="single" fetchSize="#{bindings.RutasView1.rangeSize}"
+                                                      id="t1">
+                                                <af:column headerText="#{bindings.RutasView1.hints.Idruta.label}"
+                                                           id="c3">
+                                                    <af:outputText value="#{row.Idruta}"
+                                                                   shortDesc="#{bindings.RutasView1.hints.Idruta.tooltip}"
+                                                                   id="ot1">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RutasView1.hints.Idruta.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.RutasView1.hints.Idempresatransporte.label}"
+                                                           id="c1">
+                                                    <af:selectOneChoice value="#{row.bindings.Idempresatransporte.inputValue}"
+                                                                        label="#{row.bindings.Idempresatransporte.label}"
+                                                                        required="#{bindings.RutasView1.hints.Idempresatransporte.mandatory}"
+                                                                        shortDesc="#{bindings.RutasView1.hints.Idempresatransporte.tooltip}"
+                                                                        readOnly="true" id="soc1">
+                                                        <f:selectItems value="#{row.bindings.Idempresatransporte.items}"
+                                                                       id="si1"/>
+                                                        <f:validator binding="#{row.bindings.Idempresatransporte.validator}"/>
+                                                    </af:selectOneChoice>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.RutasView1.hints.Idestatus.label}"
+                                                           id="c2">
+                                                    <af:selectOneChoice value="#{row.bindings.Idestatus.inputValue}"
+                                                                        label="#{row.bindings.Idestatus.label}"
+                                                                        required="#{bindings.RutasView1.hints.Idestatus.mandatory}"
+                                                                        shortDesc="#{bindings.RutasView1.hints.Idestatus.tooltip}"
+                                                                        readOnly="true" id="soc2">
+                                                        <f:selectItems value="#{row.bindings.Idestatus.items}"
+                                                                       id="si2"/>
+                                                        <f:validator binding="#{row.bindings.Idestatus.validator}"/>
+                                                    </af:selectOneChoice>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.RutasView1.hints.Nombre.label}"
+                                                           id="c4">
+                                                    <af:outputText value="#{row.Nombre}"
+                                                                   shortDesc="#{bindings.RutasView1.hints.Nombre.tooltip}"
+                                                                   id="ot2"/>
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelCollection>
+                                    </f:facet>
+                                    <f:facet name="second">
+                                        <af:panelCollection id="pc4">
+                                            <f:facet name="menus"/>
+                                            <f:facet name="toolbar"/>
+                                            <f:facet name="statusbar"/>
+                                            <af:table value="#{bindings.RutaParadaView2.collectionModel}" var="row"
+                                                      rows="#{bindings.RutaParadaView2.rangeSize}"
+                                                      emptyText="#{bindings.RutaParadaView2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                      rowBandingInterval="0"
+                                                      selectedRowKeys="#{bindings.RutaParadaView2.collectionModel.selectedRow}"
+                                                      selectionListener="#{bindings.RutaParadaView2.collectionModel.makeCurrent}"
+                                                      rowSelection="single"
+                                                      fetchSize="#{bindings.RutaParadaView2.rangeSize}" id="t11">
+                                                <af:column headerText="#{bindings.RutaParadaView2.hints.Idparada.label}"
+                                                           id="c12">
+                                                    <af:selectOneChoice value="#{row.bindings.Idparada.inputValue}"
+                                                                        label="#{row.bindings.Idparada.label}"
+                                                                        required="#{bindings.RutaParadaView2.hints.Idparada.mandatory}"
+                                                                        shortDesc="#{bindings.RutaParadaView2.hints.Idparada.tooltip}"
+                                                                        readOnly="true" id="soc8">
+                                                        <f:selectItems value="#{row.bindings.Idparada.items}" id="si7"/>
+                                                        <f:validator binding="#{row.bindings.Idparada.validator}"/>
+                                                    </af:selectOneChoice>
+                                                </af:column>
+                                                <af:column headerText="#{bindings.RutaParadaView2.hints.Orden.label}"
+                                                           id="c13">
+                                                    <af:outputText value="#{row.Orden}"
+                                                                   shortDesc="#{bindings.RutaParadaView2.hints.Orden.tooltip}"
+                                                                   id="ot11">
+                                                        <af:convertNumber groupingUsed="false"
+                                                                          pattern="#{bindings.RutaParadaView2.hints.Orden.format}"/>
+                                                    </af:outputText>
+                                                </af:column>
+                                            </af:table>
+                                        </af:panelCollection>
+                                    </f:facet>
+                                </af:panelSplitter>
+                            </af:panelGroupLayout>
+                        </af:showDetailItem>
+                        <af:showDetailItem id="tab2" text="PARADAS">
+                            <af:panelGroupLayout id="pgl4">
+                                <af:panelCollection id="pc2" styleClass="AFStretchWidth">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="t4">
+                                            <af:button text="NUEVA PARADA" id="b2"
+                                                       action="#{viewScope.index.initNewParada}"/>
+                                        </af:toolbar>
+                                    </f:facet>
+                                    <f:facet name="statusbar"/>
+                                    <af:table value="#{bindings.ParadasView1.collectionModel}" var="row"
+                                              rows="#{bindings.ParadasView1.rangeSize}"
+                                              emptyText="#{bindings.ParadasView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.ParadasView1.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.ParadasView1.collectionModel.makeCurrent}"
+                                              rowSelection="single" fetchSize="#{bindings.ParadasView1.rangeSize}"
+                                              id="t2" columnStretching="multiple">
+                                        <af:column headerText="#{bindings.ParadasView1.hints.Direccion.label}" id="c5"
+                                                   width="100%">
+                                            <af:outputText value="#{row.Direccion}"
+                                                           shortDesc="#{bindings.ParadasView1.hints.Direccion.tooltip}"
+                                                           id="ot3"/>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ParadasView1.hints.Idparada.label}" id="c6"
+                                                   width="100%">
+                                            <af:outputText value="#{row.Idparada}"
+                                                           shortDesc="#{bindings.ParadasView1.hints.Idparada.tooltip}"
+                                                           id="ot4">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ParadasView1.hints.Idparada.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ParadasView1.hints.Latitud.label}" id="c7"
+                                                   width="100%">
+                                            <af:outputText value="#{row.Latitud}"
+                                                           shortDesc="#{bindings.ParadasView1.hints.Latitud.tooltip}"
+                                                           id="ot5">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ParadasView1.hints.Latitud.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ParadasView1.hints.Longitud.label}" id="c8"
+                                                   width="100%">
+                                            <af:outputText value="#{row.Longitud}"
+                                                           shortDesc="#{bindings.ParadasView1.hints.Longitud.tooltip}"
+                                                           id="ot6">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.ParadasView1.hints.Longitud.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.ParadasView1.hints.Nombre.label}" id="c9"
+                                                   width="100%">
+                                            <af:outputText value="#{row.Nombre}"
+                                                           shortDesc="#{bindings.ParadasView1.hints.Nombre.tooltip}"
+                                                           id="ot7"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                            </af:panelGroupLayout>
+                        </af:showDetailItem>
+                        <af:showDetailItem text="EMPRESAS DE TRANSPORTE" id="sdi1">
+                            <af:panelGroupLayout id="pgl5">
+                                <af:panelCollection id="pc3">
+                                    <f:facet name="menus"/>
+                                    <f:facet name="toolbar">
+                                        <af:toolbar id="t7">
+                                            <af:button text="NUEVO" id="b7" action="#{viewScope.index.initNewCat}"/>
+                                        </af:toolbar>
+                                    </f:facet>
+                                    <f:facet name="statusbar"/>
+                                    <af:table value="#{bindings.CatEmpresasView1.collectionModel}" var="row"
+                                              rows="#{bindings.CatEmpresasView1.rangeSize}"
+                                              emptyText="#{bindings.CatEmpresasView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0"
+                                              selectedRowKeys="#{bindings.CatEmpresasView1.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.CatEmpresasView1.collectionModel.makeCurrent}"
+                                              rowSelection="single" fetchSize="#{bindings.CatEmpresasView1.rangeSize}"
+                                              id="t8">
+                                        <af:column headerText="#{bindings.CatEmpresasView1.hints.Idcatalogo.label}"
+                                                   id="c10">
+                                            <af:outputText value="#{row.Idcatalogo}"
+                                                           shortDesc="#{bindings.CatEmpresasView1.hints.Idcatalogo.tooltip}"
+                                                           id="ot9">
+                                                <af:convertNumber groupingUsed="false"
+                                                                  pattern="#{bindings.CatEmpresasView1.hints.Idcatalogo.format}"/>
+                                            </af:outputText>
+                                        </af:column>
+                                        <af:column headerText="#{bindings.CatEmpresasView1.hints.Nombre.label}"
+                                                   id="c11">
+                                            <af:outputText value="#{row.Nombre}"
+                                                           shortDesc="#{bindings.CatEmpresasView1.hints.Nombre.tooltip}"
+                                                           id="ot10"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelCollection>
+                            </af:panelGroupLayout>
+                        </af:showDetailItem>
+                        <af:showDetailItem text="REPORTE" id="sdi2">
+                            <af:panelGroupLayout id="pgl6" halign="center" valign="middle" layout="horizontal">
+                                <dvt:pieChart id="pieChart1" var="row"
+                                              value="#{bindings.ViewUsuarioParadaView1.collectionModel}">
+                                    <dvt:chartLegend id="cl1"/>
+                                    <dvt:pieDataItem id="di1" value="#{row.Total}" label="#{row.Nombre}"/>
+                                </dvt:pieChart>
+                                <dvt:horizontalBarChart id="horizontalBarChart1" var="row"
+                                                        value="#{bindings.ViewUsuarioParadaView11.collectionModel}">
+                                    <dvt:chartLegend id="cl2"/>
+                                    <f:facet name="dataStamp">
+                                        <dvt:chartDataItem id="di2" value="#{row.Total}" group="#{row.Inicio}"
+                                                           series="#{row.Nombre}"/>
+                                    </f:facet>
+                                </dvt:horizontalBarChart>
+                            </af:panelGroupLayout>
+                        </af:showDetailItem>
+                    </af:panelTabbed>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p_newRuta">
+                <af:dialog id="d3" type="none">
+                    <f:facet name="buttonBar">
+                        <af:toolbar id="t5">
+                            <af:button text="Guardar" id="b3" action="#{viewScope.index.saveRuta}"/>
+                            <af:button text="Cancelar" id="b4" partialSubmit="false"
+                                       action="#{viewScope.index.cancelRuta}" immediate="true"/>
+                        </af:toolbar>
+                    </f:facet>
+                    <af:panelFormLayout id="pfl1">
+                        <af:selectOneChoice value="#{bindings.Idempresatransporte.inputValue}"
+                                            label="#{bindings.Idempresatransporte.label}"
+                                            required="#{bindings.Idempresatransporte.hints.mandatory}"
+                                            shortDesc="#{bindings.Idempresatransporte.hints.tooltip}" id="soc3"
+                                            autoSubmit="false">
+                            <f:selectItems value="#{bindings.Idempresatransporte.items}" id="si3"/>
+                            <f:validator binding="#{bindings.Idempresatransporte.validator}"/>
+                        </af:selectOneChoice>
+                        <af:selectOneChoice value="#{bindings.Idestatus.inputValue}" label="#{bindings.Idestatus.label}"
+                                            required="#{bindings.Idestatus.hints.mandatory}"
+                                            shortDesc="#{bindings.Idestatus.hints.tooltip}" id="soc4"
+                                            autoSubmit="false">
+                            <f:selectItems value="#{bindings.Idestatus.items}" id="si9"/>
+                            <f:validator binding="#{bindings.Idestatus.validator}"/>
+                        </af:selectOneChoice>
+                        <af:inputText value="#{bindings.Nombre.inputValue}" label="#{bindings.Nombre.hints.label}"
+                                      required="#{bindings.Nombre.hints.mandatory}"
+                                      columns="#{bindings.Nombre.hints.displayWidth}"
+                                      maximumLength="#{bindings.Nombre.hints.precision}"
+                                      shortDesc="#{bindings.Nombre.hints.tooltip}" id="it1">
+                            <f:validator binding="#{bindings.Nombre.validator}"/>
+                        </af:inputText>
+                    </af:panelFormLayout>
+                </af:dialog>
+            </af:popup>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p_newParada"
+                      binding="#{viewScope.index.p_newParada}">
+                <af:dialog id="d2" type="none">
+                    <f:facet name="buttonBar">
+                        <af:toolbar id="t6">
+                            <af:button text="Guardar" id="b5" action="#{viewScope.index.saveParada}"/>
+                            <af:button text="Cancelar" id="b6" action="#{viewScope.index.cancelParada}"/>
+                        </af:toolbar>
+                    </f:facet>
+                    <af:panelFormLayout id="pfl2">
+                        <af:inputText value="#{bindings.Direccion.inputValue}" label="#{bindings.Direccion.hints.label}"
+                                      required="#{bindings.Direccion.hints.mandatory}"
+                                      columns="#{bindings.Direccion.hints.displayWidth}"
+                                      maximumLength="#{bindings.Direccion.hints.precision}"
+                                      shortDesc="#{bindings.Direccion.hints.tooltip}" id="it2">
+                            <f:validator binding="#{bindings.Direccion.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Latitud.inputValue}" label="#{bindings.Latitud.hints.label}"
+                                      required="#{bindings.Latitud.hints.mandatory}"
+                                      columns="#{bindings.Latitud.hints.displayWidth}"
+                                      maximumLength="#{bindings.Latitud.hints.precision}"
+                                      shortDesc="#{bindings.Latitud.hints.tooltip}" id="it3">
+                            <f:validator binding="#{bindings.Latitud.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.Latitud.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Longitud.inputValue}" label="#{bindings.Longitud.hints.label}"
+                                      required="#{bindings.Longitud.hints.mandatory}"
+                                      columns="#{bindings.Longitud.hints.displayWidth}"
+                                      maximumLength="#{bindings.Longitud.hints.precision}"
+                                      shortDesc="#{bindings.Longitud.hints.tooltip}" id="it4">
+                            <f:validator binding="#{bindings.Longitud.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.Longitud.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Nombre1.inputValue}" label="#{bindings.Nombre1.hints.label}"
+                                      required="#{bindings.Nombre1.hints.mandatory}"
+                                      columns="#{bindings.Nombre1.hints.displayWidth}"
+                                      maximumLength="#{bindings.Nombre1.hints.precision}"
+                                      shortDesc="#{bindings.Nombre1.hints.tooltip}" id="it5">
+                            <f:validator binding="#{bindings.Nombre1.validator}"/>
+                        </af:inputText>
+                    </af:panelFormLayout>
+                </af:dialog>
+            </af:popup>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p_cat" binding="#{viewScope.index.p_cat}">
+                <af:dialog id="d4" type="none">
+                    <f:facet name="buttonBar">
+                        <af:toolbar id="t9">
+                            <af:button text="Guardar" id="b9" action="#{viewScope.index.saveCatalogo}"/>
+                            <af:button text="Cancelar" id="b8" action="#{viewScope.index.cancelCat}"
+                                       partialSubmit="false"/>
+                        </af:toolbar>
+                    </f:facet>
+                    <af:panelFormLayout id="pfl3">
+                        <af:inputText value="#{bindings.Idcatalogo.inputValue}"
+                                      label="#{bindings.Idcatalogo.hints.label}"
+                                      required="#{bindings.Idcatalogo.hints.mandatory}"
+                                      columns="#{bindings.Idcatalogo.hints.displayWidth}"
+                                      maximumLength="#{bindings.Idcatalogo.hints.precision}"
+                                      shortDesc="#{bindings.Idcatalogo.hints.tooltip}" id="it6">
+                            <f:validator binding="#{bindings.Idcatalogo.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.Idcatalogo.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Nombre2.inputValue}" label="#{bindings.Nombre2.hints.label}"
+                                      required="#{bindings.Nombre2.hints.mandatory}"
+                                      columns="#{bindings.Nombre2.hints.displayWidth}"
+                                      maximumLength="#{bindings.Nombre2.hints.precision}"
+                                      shortDesc="#{bindings.Nombre2.hints.tooltip}" id="it7">
+                            <f:validator binding="#{bindings.Nombre2.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Orden.inputValue}" label="#{bindings.Orden.hints.label}"
+                                      required="#{bindings.Orden.hints.mandatory}"
+                                      columns="#{bindings.Orden.hints.displayWidth}"
+                                      maximumLength="#{bindings.Orden.hints.precision}"
+                                      shortDesc="#{bindings.Orden.hints.tooltip}" id="it8">
+                            <f:validator binding="#{bindings.Orden.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.Orden.format}"/>
+                        </af:inputText>
+                    </af:panelFormLayout>
+                    <af:selectOneChoice value="#{bindings.Idcategoria.inputValue}" label="#{bindings.Idcategoria.label}"
+                                        required="#{bindings.Idcategoria.hints.mandatory}"
+                                        shortDesc="#{bindings.Idcategoria.hints.tooltip}" id="soc5">
+                        <f:selectItems value="#{bindings.Idcategoria.items}" id="si5"/>
+                        <f:validator binding="#{bindings.Idcategoria.validator}"/>
+                    </af:selectOneChoice>
+                </af:dialog>
+            </af:popup>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p_rutaParada"
+                      binding="#{viewScope.index.p_rutaParada}">
+                <af:dialog id="d5" type="none">
+                    <f:facet name="buttonBar">
+                        <af:toolbar id="t10">
+                            <af:button text="Guardar" id="b11" action="#{viewScope.index.saveRutaParada}"/>
+                            <af:button text="Cancelar" id="b12" action="#{viewScope.index.cancelRutaParada}"/>
+                        </af:toolbar>
+                    </f:facet>
+                    <af:panelFormLayout id="pfl4">
+                        <af:selectOneChoice value="#{bindings.Idparada.inputValue}" label="#{bindings.Idparada.label}"
+                                            required="#{bindings.Idparada.hints.mandatory}"
+                                            shortDesc="#{bindings.Idparada.hints.tooltip}" id="soc6">
+                            <f:selectItems value="#{bindings.Idparada.items}" id="si4"/>
+                            <f:validator binding="#{bindings.Idparada.validator}"/>
+                        </af:selectOneChoice>
+                        <af:selectOneChoice value="#{bindings.Idruta1.inputValue}" label="#{bindings.Idruta1.label}"
+                                            required="#{bindings.Idruta1.hints.mandatory}"
+                                            shortDesc="#{bindings.Idruta1.hints.tooltip}" id="soc7">
+                            <f:selectItems value="#{bindings.Idruta1.items}" id="si6"/>
+                            <f:validator binding="#{bindings.Idruta1.validator}"/>
+                        </af:selectOneChoice>
+                        <af:inputText value="#{bindings.Orden1.inputValue}" label="#{bindings.Orden1.hints.label}"
+                                      required="#{bindings.Orden1.hints.mandatory}"
+                                      columns="#{bindings.Orden1.hints.displayWidth}"
+                                      maximumLength="#{bindings.Orden1.hints.precision}"
+                                      shortDesc="#{bindings.Orden1.hints.tooltip}" id="it9">
+                            <f:validator binding="#{bindings.Orden1.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.Orden1.format}"/>
+                        </af:inputText>
+                    </af:panelFormLayout>
+                </af:dialog>
+            </af:popup>
+        </af:form>
+    </af:document>
+</f:view>

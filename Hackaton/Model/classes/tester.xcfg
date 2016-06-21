@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="model.AM.AppModule">
+      <AppModuleConfig name="15570DBCF66" DBconnection="java:comp/env/jdbc/HackatonDS" ApplicationName="model.AM.AppModule" DeployPlatform="LOCAL" IsLazyLoadingTrue="true" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" JDBCName="Hackaton" BC4JConfigName="AppModule" jbo.project="model.Model">
+         <Database jbo.TypeMapEntries="OracleApps" jbo.SQLBuilder="Oracle"/>
+         <Security AppModuleJndiName="model.AM.AppModule"/>
+         <Tester FullProxyInterfaceName="model.AM.common.AppModule"/>
+         <Custom ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" ns0:_testers_credentials_needed="false" ns0:JDBCDataSource="java:comp/env/jdbc/HackatonDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="155715BD87E" IsLazyLoadingTrue="true" DBconnection="java:comp/env/jdbc/HackatonDS" ApplicationName="model.AM.AppModule" jbo.project="model.Model" BC4JConfigName="AppModule" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" DeployPlatform="LOCAL" JDBCName="Hackaton">
+         <Database jbo.SQLBuilder="Oracle" jbo.TypeMapEntries="OracleApps" jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="model.AM.AppModule"/>
+         <Tester FullProxyInterfaceName="model.AM.common.AppModule"/>
+         <Custom ns0:LastUsedConfiguration="AppModule" ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" ns0:JDBCDataSource="java:comp/env/jdbc/HackatonDS" ns0:_testers_credentials_needed="false" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

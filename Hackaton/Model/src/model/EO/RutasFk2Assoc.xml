@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RutasFk2Assoc"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Catalogo"
+    Cardinality="1"
+    Source="true"
+    Owner="model.EO.Catalogo">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Catalogo"/>
+      <Attr Name="_foreignKey" Value="model.EO.Catalogo.CatalogoPk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.EO.Catalogo.Idcatalogo"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="Rutas"
+    Cardinality="-1"
+    Owner="model.EO.Rutas">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Rutas"/>
+      <Attr Name="_foreignKey" Value="model.EO.Rutas.RutasFk2"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.EO.Rutas.Idempresatransporte"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

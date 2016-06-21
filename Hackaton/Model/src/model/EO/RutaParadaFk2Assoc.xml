@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RutaParadaFk2Assoc"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Paradas"
+    Cardinality="1"
+    Source="true"
+    Owner="model.EO.Paradas">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Paradas"/>
+      <Attr Name="_foreignKey" Value="model.EO.Paradas.ParadasPk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.EO.Paradas.Idparada"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="RutaParada"
+    Cardinality="-1"
+    Owner="model.EO.RutaParada">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="RutaParada"/>
+      <Attr Name="_foreignKey" Value="model.EO.RutaParada.RutaParadaFk2"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="model.EO.RutaParada.Idparada"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>
